@@ -7,40 +7,50 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Scores.html">
+    <link rel="stylesheet" href="Quiz.css">
 </head>
 <body>
     <div class="container">
-        <div id="game" class="justify-center flex-column">
-            <div id="progression">
+        <div id="Quiz" class="justify-center flex-column">
+            <div class="progression">
                 <div class="progression-item">
                  <p id="progressionText" class="progresion-prefix" >
                         Question
                  </p>
-                 <div class="progressionBar">
-                    <div class="progressionBarFull">
-
-                    </div>
+                 <div id="progressionBar">
+                    <div id="progressionBarFull">  </div>
                  </div>
-                    <div class="progression-item">
+                    <h2 class="progression-item">
                         <p class="progressionText">
-                                Score
+                             Score
                          </p>
-                            <h1 class="progression-main-text">
+                        </h2>
+                            <h1 class="progression-main-text" id="score">
                                 0
                             </h1>
                     </div>
                 </div>
-                <div class="question">What is the answer to this question?</div>
+                <h1 id="question">What is the answer to this question?</h1>
                 <div class="choice-container">
-                    <p class="choice-prefix">A </p>
-                    <p class="choice-text" data-number="1"> Choice</p>
+                    <p class="choice-align">A</p>
+                    <p class="choice-text" data-number="1">Choice 1</p>
                 </div>
                 <div class="choice-container">
-                    <p class="choice-prefix"><B></p>
-                    <p class="choice-text" data-number="2"> Choice 2</p>
+                    <p class="choice-align">B</p>
+                    <p class="choice-text" data-number="2">Choice 2</p>
                 </div>
-                
-
+                <div class="choice-container">
+                    <p class="choice-align">C</p>
+                    <p class="choice-text" data-number="3">Choice 3</p>
+                </div>
+                <div class="choice-container">
+                    <p class="choice-align">D</p>
+                    <p class="choice-text" data-number="4">Choice 4</p>
+                </div>  
             </div>
+            
+
+</div>
+    <script src="quiz.js"></script>
 </body>
 </html>
