@@ -1,13 +1,13 @@
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
-const progressionText = document.querySelector('#ProgressionText');
+ const progressionText = document.querySelector('#ProgressionText');
 const scoreText = document.querySelector('#score');
-const progressionBarFull = document.querySelector('#progressBarFull');
+const progressionBarFull = document.querySelector('#progressBarFull'); 
 
 let currentQuestion = {};
 let acceptingAnswers = true;
 let score = 0;
-let Counter = 0;
+let questionCounter = 0;
 let avaliableQuestions = [];
 
 
@@ -15,14 +15,14 @@ let questions = [
     {
     question: "What is 2 + 2?",
     choice1: "2",
-    choice2: '6',
-    choice3: '4',
-    choice4: '9',
+    choice2: "6",
+    choice3: "4",
+    choice4: "9",
     answer: 2,
 },
 {
     question: 'What is 2 + 0?',
-    choice1: '2',
+    choice1: "2",
     choice2: '6',
     choice3: '4',
     choice4: '9',
@@ -43,7 +43,7 @@ let questions = [
     choice3: '4',
     choice4: '9',
     answer: 2,
-}
+},
 ]
 
 
@@ -53,31 +53,33 @@ const SCORE_POINTS = 100
 const Max_Questions = 4
 
 startGame = () => {
-    Counter = 0
+    questionCounter = 0
     score = 0
     avaliableQuestions = [...questions]
     getNewQuestion()
-}
+};
 
 
 getNewQuestion = () => {
-    if(avaliableQuestions.length === 0 || Counter > Max_Questions) {
+    if(avaliableQuestions.length === 0 || questionCounter > Max_Questions) {
     localStorage.setItem('mostRecentScore', score)
 
     return window.location.assign('/end.html')
 }
 
-Counter++
-progressionText.innerText = `Question ${Counter} of ${MAX_Questions}`
-progressionBarFull.style.width = `$[Counter/MAX_QUESTIONS) * 100}%`
 
-const questionsIndex= Math.floor(Math.randon() * avaliableQuestions.length)
+
+questionCounter++
+/*progressionText.innerText = `Question ${questionCounter} of ${Max_Questions}`
+progressionBarFull.style.width = `$[questionCounter/MAX_QUESTIONS) * 100}%`
+*/
+const questionsIndex= Math.floor(Math.random() * avaliableQuestions.length);
 currentQuestion = avaliableQuestions[questionsIndex]
 question.innerText = currentQuestion.question
 
 choices.forEach(choice => {
-    const number = choice.dataset ['number']
-    choice.innerText = currentQuestion['choice' + number]
+    const number = choice.dataset ['number'];
+    choice.innerText = currentQuestion['choice' + number];
     
 })
 
@@ -96,16 +98,19 @@ choices.forEach(choice => {
     const selectedChoice = e.target
     const selectedAnswer = selectedChoice.dataset['number']
 
-    let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
-    'incorrect'
+    const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect' ;
+
+   /*
     if(classToApply === 'correct') {
         incrementScore(SCORE_POINTS)
-    }
 
+*/
     selectedChoice.parentElement.classList.add(classToApply)
 
-    setTimeout(() => {
-        selectedChoice.parentElement.classList.remote(classToApply)
+   /* selectedChoice.parentELement.classlist.remove(classToApply) */
+ 
+    setTimeout( () => {
+        selectedChoice.parentElement.classList.remove(classToApply)
          getNewQuestion()
         
         }, 1000)
@@ -113,4 +118,4 @@ choices.forEach(choice => {
 
     })
 })
-startGame()
+startGame();
