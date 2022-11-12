@@ -1,6 +1,6 @@
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
- const progressionText = document.querySelector('#ProgressionText');
+ const progressionText = document.querySelector('#progressionText');
 const scoreText = document.querySelector('#score');
 const progressionBarFull = document.querySelector('#progressBarFull'); 
 
@@ -13,20 +13,20 @@ let avaliableQuestions = [];
 
 let questions = [
     {
-    question: "What is 2 + 2?",
-    choice1: "2",
-    choice2: "6",
-    choice3: "4",
-    choice4: "9",
-    answer: 2,
+    question: " Who has the most amount of Rings ",
+    choice1: "Ty",
+    choice2: "Kyo",
+    choice3: "Harsh",
+    choice4: "Harsh by a far",
+    answer: 4,
 },
 {
-    question: 'What is 2 + 0?',
-    choice1: "2",
-    choice2: '6',
-    choice3: '4',
-    choice4: '9',
-    answer: 2,
+    question: 'Bruce Lee is ',
+    choice1: "MMA originator",
+    choice2: 'Fighter',
+    choice3: 'Water',
+    choice4: 'A Fake ',
+    answer: 4,
 },
 {
     question: 'What is 5 + 4?',
@@ -34,7 +34,7 @@ let questions = [
     choice2: '6',
     choice3: '4',
     choice4: '9',
-    answer: 2,
+    answer: 4,
 },
 {
     question: 'What is 3 + 3?',
@@ -70,8 +70,10 @@ getNewQuestion = () => {
 
 
 questionCounter++
-/*progressionText.innerText = `Question ${questionCounter} of ${Max_Questions}`
-progressionBarFull.style.width = `$[questionCounter/MAX_QUESTIONS) * 100}%`
+ questionCounter.innerText = `${questionCounter} of ${Max_Questions}`
+
+   /* progressionText.innerText = `${questionCounter} of ${Max_Questions}`
+ progressionBarFull.style.width = `$[questionCounter/MAX_QUESTIONS) * 100}%`
 */
 const questionsIndex= Math.floor(Math.random() * avaliableQuestions.length);
 currentQuestion = avaliableQuestions[questionsIndex]
@@ -100,14 +102,14 @@ choices.forEach(choice => {
 
     const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect' ;
 
-   /*
+   
     if(classToApply === 'correct') {
         incrementScore(SCORE_POINTS)
+    }  
 
-*/
     selectedChoice.parentElement.classList.add(classToApply)
 
-   /* selectedChoice.parentELement.classlist.remove(classToApply) */
+   
  
     setTimeout( () => {
         selectedChoice.parentElement.classList.remove(classToApply)
@@ -117,5 +119,11 @@ choices.forEach(choice => {
 
 
     })
+    incrementScore = num => {
+        score += num;
+        scoreText.innerText = score;
+    }
 })
+
+
 startGame();
