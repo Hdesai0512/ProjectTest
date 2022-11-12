@@ -37,7 +37,7 @@ h2{
 .incorrect{
     background:linear-gradient(32deg, red 0%, red 100%);
 }
-
+/*
 #progression {
     display:flex;
     justify-content: space-between;
@@ -47,11 +47,17 @@ h2{
     text-align: center;
     font-size: 2rem;
 }
-
+*/
 .progression-main-text{
     text-align: center;
-}
 
+}
+.progressionText{
+    text-align: left;
+    font-size: 5rem;
+
+}
+/*
 #progressionBar{
     width:20rem;
     height: 3rem;
@@ -67,7 +73,7 @@ h2{
     width:0%;
 }
 
-
+*/
 @media screen and (max-width: 768px) {
     .choice-container{
         min-width: 40rem;
